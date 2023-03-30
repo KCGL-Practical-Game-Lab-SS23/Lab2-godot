@@ -13,7 +13,7 @@ var _direction
 var _jumps = 1
 
 @onready var camera_base = $CameraBase
-@onready var animation = $Warrior/AnimationPlayer
+@onready var animation = $Character/AnimationPlayer
 		
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

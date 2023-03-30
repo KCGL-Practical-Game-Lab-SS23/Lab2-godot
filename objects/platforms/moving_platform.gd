@@ -13,8 +13,6 @@ func _physics_process(delta):
 	var distance_to_move = move_direction * move_speed * delta
 	_distance_moved += abs(global_position.distance_to(global_position + distance_to_move))
 	
-	print(_distance_moved)
-	
 	if _distance_moved > max_move_distance:
 		move_direction *= -1
 		_distance_moved = 0

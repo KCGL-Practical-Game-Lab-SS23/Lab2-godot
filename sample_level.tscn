@@ -1,18 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2uwv6gg2sjkb"]
+[gd_scene load_steps=12 format=3 uid="uid://d2uwv6gg2sjkb"]
 
 [ext_resource type="PackedScene" uid="uid://vyl7geeg6cw0" path="res://objects/player/Player.tscn" id="1_0o6yi"]
 [ext_resource type="PackedScene" uid="uid://dag7y85sl6r18" path="res://objects/platforms/rotating_platform.tscn" id="2_fjdy1"]
 [ext_resource type="PackedScene" uid="uid://bc8r81o7n10uy" path="res://objects/other/death_zone.tscn" id="3_gkiqt"]
 [ext_resource type="PackedScene" uid="uid://cf4kqtx1phsfn" path="res://objects/platforms/moving_platform.tscn" id="3_gxyev"]
+[ext_resource type="PackedScene" uid="uid://bsly3b568majg" path="res://objects/other/water_plane.tscn" id="3_o23uj"]
 [ext_resource type="PackedScene" uid="uid://dffie67dkkjq3" path="res://objects/other/checkpoint.tscn" id="4_tct6u"]
 [ext_resource type="PackedScene" uid="uid://cqdq3bc6qptsn" path="res://objects/obstacles/rock_shooter.tscn" id="5_dc0y6"]
 [ext_resource type="PackedScene" uid="uid://bb7cc6c0283eq" path="res://objects/platforms/static_platform.tscn" id="5_ug75s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wni2m"]
-sky_top_color = Color(0.396078, 0.596078, 0.945098, 1)
-sky_horizon_color = Color(0.733333, 0.65098, 0.392157, 1)
+sky_top_color = Color(0.290196, 0.603922, 1, 1)
+sky_horizon_color = Color(1, 0.756863, 0.278431, 1)
+sky_curve = 0.0191085
 ground_bottom_color = Color(0.188235, 0.160784, 0.12549, 1)
 ground_horizon_color = Color(0.772549, 0.643137, 0.121569, 1)
+sun_angle_max = 47.78
+sun_curve = 0.289781
 
 [sub_resource type="Sky" id="Sky_3mmqx"]
 sky_material = SubResource("ProceduralSkyMaterial_wni2m")
@@ -23,6 +27,9 @@ sky = SubResource("Sky_3mmqx")
 
 [node name="Level" type="Node3D"]
 
+[node name="Player" parent="." instance=ExtResource("1_0o6yi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.746, 0.416, 0)
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
@@ -32,11 +39,24 @@ environment = SubResource("Environment_8pjja")
 transform = Transform3D(1, 0, 0, 0, 0.774404, 0.632692, 0, -0.632692, 0.774404, 0, 15.849, 35.2732)
 
 [node name="DeathZone" parent="World" instance=ExtResource("3_gkiqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+
+[node name="WaterPlane" parent="World" instance=ExtResource("3_o23uj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009, -100, 0.011)
 
 [node name="Obstacles" type="Node3D" parent="."]
 
 [node name="RockShooter" parent="Obstacles" instance=ExtResource("5_dc0y6")]
-transform = Transform3D(-0.00171047, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.00171047, -0.977804, 1.06812, 14.5982)
+transform = Transform3D(-0.00171047, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.00171047, 9.46725, 1.06812, 14.5982)
+
+[node name="RockShooter4" parent="Obstacles" instance=ExtResource("5_dc0y6")]
+transform = Transform3D(-0.00171047, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.00171047, 6.3981, 1.06812, 14.5982)
+
+[node name="RockShooter2" parent="Obstacles" instance=ExtResource("5_dc0y6")]
+transform = Transform3D(-0.00171047, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.00171047, 12.4547, 1.06812, 14.5982)
+
+[node name="RockShooter3" parent="Obstacles" instance=ExtResource("5_dc0y6")]
+transform = Transform3D(-0.0017453, 1.52579e-10, 0.999999, -8.74228e-08, -1, 0, 0.999999, -8.74226e-08, 0.0017453, -17.1636, 1.06812, -10.8963)
 
 [node name="RotatingPlatform" parent="Obstacles" instance=ExtResource("2_fjdy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8679, 0, 0)
@@ -56,13 +76,13 @@ rotation_vector = Vector3(0, 0, 1)
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 67.2878, 20, 30.794)
 
 [node name="StaticPlatform3" parent="Obstacles" instance=ExtResource("5_ug75s")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 113.1, 20, 30.794)
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 20, 30.794)
 
 [node name="StaticPlatform2" parent="Obstacles" instance=ExtResource("5_ug75s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.156, 20, 40.521)
 
 [node name="StaticPlatform5" parent="Obstacles" instance=ExtResource("5_ug75s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.637, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0121, 0, 0)
 
 [node name="StaticPlatform7" parent="Obstacles" instance=ExtResource("5_ug75s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1549, 0, 0)
@@ -70,8 +90,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1549, 0, 0)
 [node name="StaticPlatform8" parent="Obstacles" instance=ExtResource("5_ug75s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6672, 0, 0)
 
+[node name="StaticPlatform9" parent="Obstacles" instance=ExtResource("5_ug75s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3052, 0, 0)
+
 [node name="StaticPlatform6" parent="Obstacles" instance=ExtResource("5_ug75s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27858, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58831, 0, 0)
 
 [node name="StaticPlatform4" parent="Obstacles" instance=ExtResource("5_ug75s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.075, 20, 40.521)
@@ -93,19 +116,15 @@ shoot_interval = 1
 [node name="MovingPlatform2" parent="Obstacles" instance=ExtResource("3_gxyev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.0419, 0, 50.5017)
 move_speed = 5
-max_move_distance = 25
+max_move_distance = 20
 
 [node name="RotatingPlatform2" parent="Obstacles" instance=ExtResource("2_fjdy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1364, 0, 0)
-rotation_speed = 2
 rotation_vector = Vector3(1, 0, 0)
 
 [node name="RotatingPlatform6" parent="Obstacles" instance=ExtResource("2_fjdy1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5011, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27027, 0, 0)
 rotation_speed = 5
-
-[node name="Player" parent="." instance=ExtResource("1_0o6yi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.746, 0.416, 0)
 
 [node name="Checkpoint" parent="." instance=ExtResource("4_tct6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7574, 1.59268, 0.182174)
