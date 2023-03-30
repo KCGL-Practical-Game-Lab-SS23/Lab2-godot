@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpfik4ck3km4x"]
+
+[ext_resource type="Script" path="res://objects/obstacles/rock.gd" id="1_r4du1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_f0qol"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tr3m8"]
+size = Vector3(0.888901, 0.858541, 1)
+
+[node name="Rock" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 0
+safe_margin = 9.758
+script = ExtResource("1_r4du1")
+speed = 30
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_f0qol")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_tr3m8")
+
+[node name="LifeSpan" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeSpan" to="." method="_on_timer_timeout"]

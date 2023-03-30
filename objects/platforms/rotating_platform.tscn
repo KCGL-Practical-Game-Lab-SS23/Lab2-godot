@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dag7y85sl6r18"]
+
+[ext_resource type="Script" path="res://objects/platforms/rotating_platform.gd" id="1_12d42"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vm3xb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gbdsx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xf102"]
+size = Vector3(7.80803, 0.304953, 7.43859)
+
+[node name="RotatingPlatform" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_vm3xb")
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_12d42")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(8, 0, 0, 0, 0.2, 0, 0, 0, 8, 0, 0, 0)
+mesh = SubResource("BoxMesh_gbdsx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xf102")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqdq3bc6qptsn"]
+
+[ext_resource type="Script" path="res://objects/obstacles/rock_shooter.gd" id="1_5omnd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8nb7d"]
+
+[node name="RockShooter" type="Node3D"]
+script = ExtResource("1_5omnd")
+
+[node name="ShootInterval" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, -1, 0, 2, -4.37114e-08, 0, 0, 0, 2, 1.00637, 0, 0)
+mesh = SubResource("CylinderMesh_8nb7d")
+
+[node name="Aim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88552, 0, 0)
+
+[connection signal="timeout" from="ShootInterval" to="." method="_on_shoot_interval_timeout"]
