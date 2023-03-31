@@ -30,8 +30,15 @@ func _physics_process(delta):
 	_horizontal_movement(delta)
 	
 	move_and_slide()
+
+func die():
+	animation.play("locomotion-library/death")
+	set_process(false)
+	set_physics_process(false)
 	
 func respawn():
+	set_process(true)
+	set_physics_process(true)
 	global_position = respawn_point
 
 func _input(event):
@@ -71,3 +78,6 @@ func _vertical_movement(delta):
 		animation.play("locomotion-library/jump")
 
 
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "locomotion-library/death":
+		respawn()

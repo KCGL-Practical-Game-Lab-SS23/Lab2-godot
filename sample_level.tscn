@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2uwv6gg2sjkb"]
+[gd_scene load_steps=13 format=3 uid="uid://d2uwv6gg2sjkb"]
 
 [ext_resource type="PackedScene" uid="uid://vyl7geeg6cw0" path="res://objects/player/Player.tscn" id="1_0o6yi"]
 [ext_resource type="PackedScene" uid="uid://dag7y85sl6r18" path="res://objects/platforms/rotating_platform.tscn" id="2_fjdy1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dffie67dkkjq3" path="res://objects/other/checkpoint.tscn" id="4_tct6u"]
 [ext_resource type="PackedScene" uid="uid://cqdq3bc6qptsn" path="res://objects/obstacles/rock_shooter.tscn" id="5_dc0y6"]
 [ext_resource type="PackedScene" uid="uid://bb7cc6c0283eq" path="res://objects/platforms/static_platform.tscn" id="5_ug75s"]
+[ext_resource type="PackedScene" uid="uid://cr8v8nngnp0nd" path="res://objects/obstacles/spike.tscn" id="9_g2jkc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wni2m"]
 sky_top_color = Color(0.290196, 0.603922, 1, 1)
@@ -28,7 +29,7 @@ sky = SubResource("Sky_3mmqx")
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0o6yi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.746, 0.416, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3052, 0, 0)
 
 [node name="World" type="Node3D" parent="."]
 
@@ -56,7 +57,7 @@ transform = Transform3D(-0.00171047, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.0017
 transform = Transform3D(-0.00171047, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.00171047, 12.4547, 1.06812, 14.5982)
 
 [node name="RockShooter3" parent="Obstacles" instance=ExtResource("5_dc0y6")]
-transform = Transform3D(-0.0017453, 1.52579e-10, 0.999999, -8.74228e-08, -1, 0, 0.999999, -8.74226e-08, 0.0017453, -17.1636, 1.06812, -10.8963)
+transform = Transform3D(-0.0017453, 1.52579e-10, 0.999999, -8.74228e-08, -1, 0, 0.999999, -8.74226e-08, 0.0017453, -23.358, 1.06812, -10.8963)
 
 [node name="RotatingPlatform" parent="Obstacles" instance=ExtResource("2_fjdy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8679, 0, 0)
@@ -119,12 +120,33 @@ move_speed = 5
 max_move_distance = 20
 
 [node name="RotatingPlatform2" parent="Obstacles" instance=ExtResource("2_fjdy1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1364, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1364, 0.115579, 0)
 rotation_vector = Vector3(1, 0, 0)
 
 [node name="RotatingPlatform6" parent="Obstacles" instance=ExtResource("2_fjdy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27027, 0, 0)
 rotation_speed = 5
+
+[node name="Spike" parent="Obstacles" instance=ExtResource("9_g2jkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0506, 0, -0.166338)
+
+[node name="Spike2" parent="Obstacles" instance=ExtResource("9_g2jkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.4883, 20, 27.7515)
+
+[node name="Spike3" parent="Obstacles" instance=ExtResource("9_g2jkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.1385, 20, 33.7445)
+
+[node name="Spike4" parent="Obstacles" instance=ExtResource("9_g2jkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.121, 20, 30.475)
+
+[node name="Spike5" parent="Obstacles" instance=ExtResource("9_g2jkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.367, 20, 33.6352)
+
+[node name="Spike6" parent="Obstacles" instance=ExtResource("9_g2jkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.367, 20, 28.1607)
+
+[node name="Spike7" parent="Obstacles" instance=ExtResource("9_g2jkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.459, 20, 30.485)
 
 [node name="Checkpoint" parent="." instance=ExtResource("4_tct6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7574, 1.59268, 0.182174)
